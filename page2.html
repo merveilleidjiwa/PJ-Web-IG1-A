@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonjour tout le monde</title>
+    <style>
+        /* Importation de la police Premium */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap');
+
+        /* =========================================
+           STYLE GÉNÉRAL
+           ========================================= */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6;
+            color: #2c3e50;
+            margin: 0;
+            padding: 40px 20px;
+            overflow-x: hidden;
+            
+            /* ASTUCE : Cacher la barre de défilement pour un effet "Application" super propre */
+            scrollbar-width: none; /* Pour Firefox */
+        }
+        
+        body::-webkit-scrollbar {
+            display: none; /* Pour Chrome, Safari et Edge */
+        }
+
+        .conteneur {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Le grand titre d'accueil et son sous-titre */
+        .titre-page {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 900;
+            color: #1a252f;
+            text-transform: uppercase;
+            margin-bottom: 0px; /* Réduit pour coller au sous-titre */
+            letter-spacing: 2px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .titre-page span {
+            color: #d4af37;
+        }
+
+        .sous-titre {
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #4a5568;
+            margin-top: 5px;
+            margin-bottom: 50px;
+            letter-spacing: 1px;
+        }
+
+        /* =========================================
+           DESIGN DES CARTES (GLASSMORPHISM)
+           ========================================= */
+        .carte {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid #d4af37;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            animation: apparition 0.8s ease-out forwards;
+        }
+
+        @keyframes apparition {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* =========================================
+           SECTION 1 : LA PRÉSENTATION (TOI)
+           ========================================= */
+        .texte-presentation {
+            flex: 1.5;
+        }
+
+        .texte-presentation h2 {
+            font-size: 2rem;
+            color: #1a252f;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .texte-presentation h2 span {
+            color: #d4af37;
+            font-weight: 800;
+        }
+
+        .texte-presentation p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #4a5568;
+            margin-bottom: 0;
+        }
+
+        .image-presentation {
+            flex: 1;
+            text-align: center;
+        }
+
+        .image-presentation img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 5px solid white;
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+            transform: rotate(3deg);
+            transition: transform 0.4s ease;
+        }
+
+        .image-presentation img:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        /* =========================================
+           SECTION 2 : LE COURS ET LE PROF
+           ========================================= */
+        .texte-prof {
+            flex: 1;
+        }
+
+        .texte-prof h2 {
+            font-size: 1.8rem;
+            color: #1a252f;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .texte-prof h2 span {
+            color: #d4af37;
+        }
+
+        .texte-prof p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #4a5568;
+        }
+
+        .nom-prof {
+            font-size: 1.2rem;
+            color: #1a252f;
+            background: rgba(212, 175, 55, 0.15);
+            padding: 2px 8px;
+            border-radius: 5px;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        /* L'animation de la flèche courbée */
+        .fleche-container {
+            width: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fleche-container svg {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.1));
+            animation: flotter-fleche 2s infinite alternate ease-in-out;
+        }
+
+        @keyframes flotter-fleche {
+            from { transform: translateX(-5px); }
+            to { transform: translateX(5px); }
+        }
+
+        .image-prof {
+            flex: 1;
+            text-align: center;
+        }
+
+        .image-prof img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid #1a252f;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s ease;
+        }
+
+        .image-prof img:hover {
+            transform: scale(1.05);
+            border-color: #d4af37;
+        }
+
+        /* =========================================
+           RESPONSIVE (POUR PETITS ÉCRANS)
+           ========================================= */
+        @media (max-width: 768px) {
+            .carte {
+                flex-direction: column;
+                text-align: center;
+            }
+            .fleche-container {
+                transform: rotate(90deg);
+                margin: 20px 0;
+            }
+            .texte-presentation, .texte-prof {
+                text-align: justify;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="conteneur">
+        
+        <h1 class="titre-page">Bonjour <span>tout le monde</span></h1>
+        <div class="sous-titre">Bienvenue en IG1/A</div>
+
+        <div class="carte">
+            <div class="texte-presentation">
+                <h2>Moi c'est <span>Kali Merveille Idjiwa</span></h2>
+                <p>
+                    Reuf ! Je suis actuellement étudiant en première année d'Informatique de Gestion (<strong>IG1-A</strong>) à l'ENEAM. Et attention, c'est pas n'importe qui qui fait la IG hein, allez vous renseigner ! 😎
+                    <br><br>
+                    Déjà avec mon Diplôme de Technicien (DT) en IMI en poche, la maintenance et les réseaux informatiques n'ont plus de secret pour moi. Bref, on est sur un profil polyvalent et super motivé !
+                </p>
+            </div>
+            <div class="image-presentation">
+                <img src="image/image_exemple.png" alt="Photo de Kali Merveille">
+            </div>
+        </div>
+
+
+        <div class="carte" style="animation-delay: 0.3s;">
+            <div class="texte-prof">
+                <h2>Mon Premier <span>Site Web</span></h2>
+                <p>
+                    Ceci est mon tout premier site web, réalisé avec passion lors de notre cours de Web Design. Ce cours nous a été dispensé par le 
+                    <strong class="nom-prof">Dr Matine Ousmane</strong>. 
+                    <br><br>
+                    Franchement, je suis tellement ravi de faire ce cours avec lui. Un docteur vraiment spécial quand même, qui nous donne envie de nous surpasser !
+                </p>
+            </div>
+
+            <div class="fleche-container">
+                <svg viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="pointe-fleche" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#d4af37" />
+                        </marker>
+                    </defs>
+                    <path d="M 10 30 Q 75 -30 135 60" fill="none" stroke="#d4af37" stroke-width="4" stroke-dasharray="8,5" marker-end="url(#pointe-fleche)" />
+                </svg>
+            </div>
+
+            <div class="image-prof">
+                <img src="image/prof.png" alt="Photo du Dr Matine Ousmane">
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

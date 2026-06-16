@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet WEB</title>
+</head>
+<!-- J'ai légèrement ajusté les hauteurs (18% pour le header) pour laisser plus de place -->
+<frameset rows="18%,72%,10%" frameborder="0" border="0" framespacing="0">
+    <frame src="header.html" class="entête" scrolling="no" noresize/>
+    <frameset cols="22%,78%" frameborder="0" border="0" framespacing="0">
+        <frame src="menu.html" scrolling="auto" class="fond_menu_BODY" noresize/>
+        <!-- ICI : on charge accueil.html par défaut -->
+        <frame src="accueil.html" id="BODY" name="BODY" scrolling="auto" class="fond_BODY"/>
+    </frameset>
+    <frame src="footer.html" class="pied_de_page" scrolling="no" noresize/>
+</frameset>
+</html>

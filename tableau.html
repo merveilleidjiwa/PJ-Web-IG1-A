@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Les Tableaux en XHTML</title>
+    <style>
+        /* Importation de la police Premium */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+        /* =========================================
+           STYLE GÉNÉRAL DU FOND ET DU TEXTE
+           ========================================= */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6;
+            color: #2c3e50;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .conteneur {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .titre-page {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1a252f;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+        .titre-page span {
+            color: #d4af37;
+        }
+
+        .carte {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid #d4af37;
+            animation: apparition 0.6s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes apparition {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h3 {
+            color: #1a252f;
+            font-size: 1.4rem;
+            font-weight: 600;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* =========================================
+           CSS SPÉCIFIQUE AUX TABLEAUX (Le Cours + Premium)
+           ========================================= */
+        table {
+            width: 100%;
+            /* Propriété du cours : coller les bordures entre elles */
+            border-collapse: collapse; 
+            margin: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            /* Propriété du cours : ajouter des bordures */
+            border: 1px solid #ddd; 
+            padding: 12px 15px;
+            text-align: left;
+            /* Propriété du cours : alignement vertical */
+            vertical-align: middle; 
+        }
+
+        /* Design de l'en-tête */
+        th {
+            background-color: #1a252f;
+            color: #d4af37;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* Design du pied de tableau */
+        tfoot th {
+            background-color: #f4f7f6;
+            color: #1a252f;
+            font-size: 0.8rem;
+            border-top: 2px solid #d4af37;
+        }
+
+        /* Lignes zébrées pour faciliter la lecture */
+        tbody tr:nth-child(even) {
+            background-color: #f9fbfb;
+        }
+
+        /* Effet au survol d'une ligne du tableau */
+        tbody tr:hover {
+            background-color: rgba(212, 175, 55, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        /* Titre du tableau */
+        caption {
+            /* Propriété du cours : position du titre */
+            caption-side: top; 
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #1a252f;
+            margin-bottom: 10px;
+            text-align: left;
+            padding-left: 5px;
+            border-left: 4px solid #d4af37;
+        }
+
+        /* Mise en forme de cellules fusionnées spéciales */
+        .cellule-fusionnee {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            background-color: #fffaf0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="conteneur">
+        <div class="titre-page">Documentation des <span>Tableaux</span></div>
+
+        <div class="carte" style="animation-delay: 0.1s;">
+            <h3>1. Tableau avec En-tête et Titre</h3>
+            <p>Utilisation des balises de base : <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;td&gt;</code>, <code>&lt;th&gt;</code> et <code>&lt;caption&gt;</code>.</p>
+            
+            <table>
+                <caption>Passagers du vol 377 (Tableau Simple)</caption>
+                <tr>
+                    <th>Nom</th>
+                    <th>Age</th>
+                    <th>Pays</th>
+                </tr>
+                <tr>
+                    <td>Carmen</td>
+                    <td>33 ans</td>
+                    <td>Espagne</td>
+                </tr>
+                <tr>
+                    <td>Michelle</td>
+                    <td>26 ans</td>
+                    <td>Etats-Unis</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="carte" style="animation-delay: 0.2s;">
+            <h3>2. Diviser un gros tableau</h3>
+            <p>Utilisation des balises <code>&lt;thead&gt;</code>, <code>&lt;tfoot&gt;</code> et <code>&lt;tbody&gt;</code> pour structurer les grandes quantités de données.</p>
+
+            <table>
+                <caption>Liste Complète - Passagers du vol 377</caption>
+                <thead> <tr>
+                        <th>Nom</th>
+                        <th>Age</th>
+                        <th>Pays</th>
+                    </tr>
+                </thead>
+                <tfoot> <tr>
+                        <th>Nom</th>
+                        <th>Age</th>
+                        <th>Pays</th>
+                    </tr>
+                </tfoot>
+                <tbody> <tr>
+                        <td>Carmen</td>
+                        <td>33 ans</td>
+                        <td>Espagne</td>
+                    </tr>
+                    <tr>
+                        <td>Michelle</td>
+                        <td>26 ans</td>
+                        <td>Etats-Unis</td>
+                    </tr>
+                    <tr>
+                        <td>François</td>
+                        <td>43 ans</td>
+                        <td>France</td>
+                    </tr>
+                    <tr>
+                        <td>Martine</td>
+                        <td>34 ans</td>
+                        <td>France</td>
+                    </tr>
+                    <tr>
+                        <td>Jonathan</td>
+                        <td>13 ans</td>
+                        <td>Australie</td>
+                    </tr>
+                    <tr>
+                        <td>Xu</td>
+                        <td>19 ans</td>
+                        <td>Chine</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="carte" style="animation-delay: 0.3s;">
+            <h3>3. Fusionner des cellules</h3>
+            <p>Utilisation des attributs <code>colspan</code> (fusion horizontale) et <code>rowspan</code> (fusion verticale).</p>
+
+            <table>
+                <tr>
+                    <th>Titre du film</th>
+                    <th>Pour enfants ?</th>
+                    <th>Pour adolescents ?</th>
+                </tr>
+                <tr>
+                    <td>Massacre à la tronçonneuse</td>
+                    <td>Non, trop violent</td>
+                    <td>Oui</td>
+                </tr>
+                <tr>
+                    <td>Les bisounours font du ski</td>
+                    <td>Oui, adapté</td>
+                    <td>Pas assez violent...</td>
+                </tr>
+                <tr>
+                    <td>Lucky Luke, seul contre tous</td>
+                    <td colspan="2" class="cellule-fusionnee">Pour toute la famille !</td>
+                </tr>
+                <tr>
+                    <td>Film avec scène coupée (Exemple)</td>
+                    <td>Oui</td>
+                    <td rowspan="2" class="cellule-fusionnee">Analyse en cours...</td>
+                </tr>
+                <tr>
+                    <td>Film documentaire (Exemple)</td>
+                    <td>Non</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+</html>

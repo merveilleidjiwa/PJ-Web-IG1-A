@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Les Listes en XHTML</title>
+    <style>
+        /* Importation de la police Premium */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+        /* =========================================
+           STYLE GÉNÉRAL DU FOND ET DU TEXTE
+           ========================================= */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6; /* Fond très clair et propre */
+            color: #2c3e50;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .conteneur {
+            max-width: 900px;
+            margin: 0 auto; /* Centre le contenu */
+        }
+
+        /* Le grand titre de la page */
+        .titre-page {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1a252f;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+        .titre-page span {
+            color: #d4af37; /* Touche dorée */
+        }
+
+        /* =========================================
+           LE DESIGN DES CARTES (GLASSMORPHISM / CLEAN UI)
+           ========================================= */
+        .carte {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Ombre douce */
+            border-top: 4px solid #d4af37; /* Ligne dorée en haut de chaque carte */
+            animation: apparition 0.6s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Animation d'apparition fluide quand on ouvre la page */
+        @keyframes apparition {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Les sous-titres (H3) */
+        h3 {
+            color: #1a252f;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-top: 0;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* =========================================
+           MISE EN FORME DES TEXTES (REMPLACE L'ANCIEN CSS)
+           ========================================= */
+        p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+        em {
+            color: #d4af37; /* Italique en doré au lieu du fond jaune moche */
+            font-style: italic;
+            font-weight: 600;
+        }
+        strong {
+            color: #1a252f; /* Gras en bleu nuit au lieu du rouge */
+            font-weight: 800;
+        }
+
+        /* =========================================
+           MISE EN FORME GÉNÉRALE DES LISTES
+           ========================================= */
+        ul, ol {
+            padding-left: 25px;
+        }
+        li {
+            padding: 5px 0;
+            color: #4a5568;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+        }
+        li:hover {
+            color: #1a252f;
+            transform: translateX(5px); /* Petit effet au survol des éléments de la liste */
+        }
+
+        /* =========================================
+           MISE EN FORME DE LA LISTE DE DÉFINITIONS (DL)
+           ========================================= */
+        dl {
+            background: #fcfcfc;
+            border-left: 3px solid #d4af37;
+            padding: 15px 20px;
+            border-radius: 5px;
+        }
+        dt {
+            font-weight: 800;
+            color: #1a252f;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+        dd {
+            margin-left: 20px;
+            color: #666;
+            font-style: italic;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #ddd;
+        }
+        dd:last-child { border-bottom: none; }
+
+        /* =========================================
+           LES CLASSES SPÉCIFIQUES DU COURS
+           ========================================= */
+        /* Retraits */
+        .pas_de_retrait { list-style-position: inside; background: #f8f9fa; padding: 10px; border-radius: 5px;}
+        .retrait { list-style-position: outside; background: #f8f9fa; padding: 10px 10px 10px 30px; border-radius: 5px;}
+
+        /* Puces personnalisées */
+        .cercle { list-style-type: circle; }
+        .carre { list-style-type: square; }
+        .rien { list-style-type: none; padding-left: 0; }
+
+        /* Listes ordonnées personnalisées */
+        .commence_a_zero { list-style-type: decimal-leading-zero; }
+        .lettres_minuscules { list-style-type: lower-alpha; }
+        .chiffres_romains { list-style-type: upper-roman; font-weight: bold; }
+        .lettres_grecques { list-style-type: lower-greek; }
+
+        /* Puce Image */
+        .liste-image { list-style-image: url("dossier.png"); }
+
+    </style>
+</head>
+<body>
+
+    <div class="conteneur">
+        <div class="titre-page">Documentation des <span>Listes</span></div>
+
+        <div class="carte" style="animation-delay: 0.1s;">
+            <h3>1. Liste non ordonnée (à puces simples)</h3>
+            <ul>
+                <li>Fraises</li>
+                <li>Framboises</li>
+                <li>Cerises</li>
+            </ul>
+        </div>
+
+        <div class="carte" style="animation-delay: 0.2s;">
+            <h3>2. Liste ordonnée</h3>
+            <ol>
+                <li>Je me lève</li>
+                <li>Je mange et je bois</li>
+                <li>Je retourne me coucher</li>
+            </ol>
+        </div>
+
+        <div class="carte" style="animation-delay: 0.3s;">
+            <h3>3. Liste de définitions</h3>
+            <dl>
+                <dt>Chat</dt>
+                <dd>Animal à 4 pattes qui fait "Miaou !"</dd>
+                <dt>Chien</dt>
+                <dd>Animal à 4 pattes qui fait "Ouaf Ouaf !"</dd>
+                <dt>Prof de maths</dt>
+                <dd>Personne qui enseigne des choses que personne ne comprend</dd>
+            </dl>
+        </div>
+
+        <div class="carte" style="animation-delay: 0.4s;">
+            <h3>4. Liste avec gestion du retrait</h3>
+            <p>Voici une liste avec retrait (par défaut) :</p>
+            <ul class="retrait">
+                <li>Liste à puces</li>
+                <li>Ligne 1<br />Ligne 2</li>
+                <li>Vous pouvez voir<br />que le texte est décalé sur la droite</li>
+            </ul>
+
+            <p>Voici une liste sans retrait :</p>
+            <ul class="pas_de_retrait">
+                <li>Liste à puces</li>
+                <li>Ligne 1<br />Ligne 2</li>
+                <li>Vous pouvez voir<br />que le texte n'est pas décalé sur la droite</li>
+            </ul>
+        </div>
+
+        <div class="carte" style="animation-delay: 0.5s;">
+            <h3>5. Listes non ordonnées avec puces personnalisées</h3>
+            <p>Voici une liste à puce non ordonnée sans modification (= <em>disc</em>) :</p>
+            <ul>
+                <li>Liste</li>
+                <li>à</li>
+                <li>puces</li>
+            </ul>
+
+            <p>Avec <em>circle</em> :</p>
+            <ul class="cercle">
+                <li>Liste</li>
+                <li>à</li>
+                <li>puces</li>
+            </ul>
+
+            <p>Avec <em>square</em> :</p>
+            <ul class="carre">
+                <li>Liste</li>
+                <li>à</li>
+                <li>puces</li>
+            </ul>
+
+            <p>Avec <em>none</em> (sans puces) :</p>
+            <ul class="rien">
+                <li>Liste</li>
+                <li>à</li>
+                <li>puces</li>
+            </ul>
+        </div>
+
+        <div class="carte" style="animation-delay: 0.6s;">
+            <h3>6. Listes ordonnées avec lettres ou chiffres</h3>
+            <p>Liste à puces ordonnée sans modification (= <em>decimal</em>)</p>
+            <ol>
+                <li>Un</li>
+                <li>Deux</li>
+                <li>Trois</li>
+                <li>Quatre</li>
+            </ol>
+
+            <p>Avec <em>decimal-leading-zero</em> (<strong>Ne fonctionne pas sous IE</strong>) :</p>
+            <ol class="commence_a_zero">
+                <li>Un</li>
+                <li>Deux</li>
+                <li>Trois</li>
+                <li>Quatre</li>
+            </ol>
+
+            <p>Avec <em>lower-alpha</em> :</p>
+            <ol class="lettres_minuscules">
+                <li>Un</li>
+                <li>Deux</li>
+                <li>Trois</li>
+                <li>Quatre</li>
+            </ol>
+
+            <p>Avec <em>upper-roman</em> :</p>
+            <ol class="chiffres_romains">
+                <li>Un</li>
+                <li>Deux</li>
+                <li>Trois</li>
+                <li>Quatre</li>
+            </ol>
+
+            <p>Avec <em>lower-greek</em> (<strong>Ne fonctionne pas sous IE</strong>) :</p>
+            <ol class="lettres_grecques">
+                <li>Un</li>
+                <li>Deux</li>
+                <li>Trois</li>
+                <li>Quatre</li>
+            </ol>
+        </div>
+
+        <div class="carte" style="animation-delay: 0.7s;">
+            <h3>7. Liste avec puce image</h3>
+            <ul class="liste-image">
+                <li>Élément 1 (nécessite une image "dossier.png" dans le même dossier)</li>
+                <li>Élément 2</li>
+                <li>Élément 3</li>
+            </ul>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* Importation d'une police très élégante */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;900&display=swap');
+
+        body { 
+            /* Dégradé subtil pour donner de la profondeur au header */
+            background: linear-gradient(90deg, #0a0e18 0%, #162235 50%, #0a0e18 100%);
+            margin: 0; 
+            padding: 0 25px; 
+            overflow: hidden;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.5);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5); /* Ombre portée sous le header */
+            display: flex;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .boite {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .texte-milieu {
+            text-align: center;
+            flex-grow: 1;
+        }
+        .titre {
+            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+            font-weight: 500;
+            color: #8fa3b8; /* Bleu-gris très chic */
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .nom {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 2px;
+            /* Le fameux effet Or Métallique Premium */
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0px 3px 10px rgba(212, 175, 55, 0.2);
+            transition: all 0.4s ease;
+        }
+        .nom:hover {
+            filter: brightness(1.2);
+            text-shadow: 0px 5px 20px rgba(212, 175, 55, 0.6);
+        }
+        /* Les logos nus (sans fond blanc) avec un effet de survol */
+        .logo img {
+            height: 70px;
+            width: auto;
+            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.5));
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .logo img:hover {
+            transform: scale(1.1) rotate(-3deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="boite">
+        <div class="logo">
+            <a href="https://uac.bj" target="_blank">
+                <img src="image/logo_uac.png" alt="UAC">
+            </a> 
+        </div>
+        
+        <div class="texte-milieu">
+            <div class="titre">Bienvenue dans le site web de</div>
+            <a href="TP1.html#citation" target="BODY" class="nom">KALI MERVEILLE</a>
+        </div>
+
+        <div class="logo">
+            <a href="https://eneam.uac.bj" target="_blank">
+                <img src="image/logo_eneam.png" alt="ENEAM">
+            </a>
+        </div>
+    </div>
+</body>
+</html>

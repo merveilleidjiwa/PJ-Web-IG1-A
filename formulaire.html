@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Les Formulaires en XHTML</title>
+    <style>
+        /* Importation de la police Premium */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&display=swap');
+
+        /* =========================================
+           STYLE GÉNÉRAL
+           ========================================= */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6;
+            color: #2c3e50;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .conteneur {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .titre-page {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1a252f;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+        .titre-page span {
+            color: #d4af37;
+        }
+
+        /* =========================================
+           DESIGN DES FIELDSETS (LES SECTIONS)
+           ========================================= */
+        fieldset {
+            background: #ffffff;
+            border: 1px solid rgba(26, 37, 47, 0.1);
+            border-radius: 12px;
+            padding: 35px 30px 20px 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        fieldset:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        legend {
+            background: #1a252f;
+            color: #d4af37;
+            padding: 8px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            text-transform: uppercase;
+        }
+
+        /* =========================================
+           LABELS, BADGES DE CODE ET EXPLICATIONS
+           ========================================= */
+        label {
+            font-weight: 600;
+            color: #1a252f;
+            font-size: 1rem;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        /* Le petit badge sombre pour afficher le type de code */
+        .badge-code {
+            background-color: #1a252f;
+            color: #d4af37;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.8rem;
+            margin-left: 10px;
+            vertical-align: middle;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .description-champ {
+            font-size: 0.85rem;
+            color: #8fa3b8;
+            margin-bottom: 10px;
+            font-style: italic;
+            display: block;
+        }
+
+        p { margin-bottom: 25px; }
+
+        /* =========================================
+           LE DESIGN UNIVERSEL DES INPUTS (L'effet Or)
+           ========================================= */
+        input[type="text"], input[type="password"], input[type="email"], 
+        input[type="tel"], input[type="url"], input[type="number"], 
+        input[type="search"], input[type="date"], input[type="time"], 
+        input[type="month"], input[type="week"], input[type="datetime-local"], 
+        input[type="file"], textarea, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e5ea;
+            border-radius: 8px;
+            background-color: #f8fafc;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            color: #2c3e50;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, 
+        input[type="tel"]:focus, input[type="url"]:focus, input[type="number"]:focus, 
+        input[type="search"]:focus, input[type="date"]:focus, input[type="time"]:focus, 
+        input[type="month"]:focus, input[type="week"]:focus, input[type="datetime-local"]:focus, 
+        input[type="file"]:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #d4af37;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
+            transform: translateY(-2px);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Spécial pour les curseurs et couleurs */
+        input[type="range"] {
+            width: 100%;
+            accent-color: #d4af37;
+            cursor: pointer;
+        }
+        
+        input[type="color"] {
+            width: 100px;
+            height: 50px;
+            padding: 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            border: 2px solid #e1e5ea;
+        }
+
+        /* =========================================
+           CHECKBOX ET BOUTONS RADIO
+           ========================================= */
+        .groupe-choix {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e1e5ea;
+            margin-top: 5px;
+        }
+
+        .ligne-choix {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            padding: 5px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+
+        .ligne-choix:hover { background: rgba(212, 175, 55, 0.05); }
+
+        .ligne-choix label { margin-bottom: 0; margin-left: 10px; cursor: pointer; font-weight: 500;}
+
+        input[type="radio"], input[type="checkbox"] {
+            accent-color: #d4af37;
+            transform: scale(1.3);
+            cursor: pointer;
+        }
+
+        /* =========================================
+           BOUTONS D'ACTION
+           ========================================= */
+        .zone-boutons {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px dashed #ccc;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 10px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(45deg, #d4af37, #fcf6ba);
+            color: #1a252f;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.6);
+        }
+
+        .btn-reset {
+            background: #1a252f;
+            color: #d4af37;
+            box-shadow: 0 5px 15px rgba(26, 37, 47, 0.3);
+        }
+
+        .btn-reset:hover {
+            transform: translateY(-3px);
+            background: #2c3e50;
+            color: #fff;
+        }
+
+        /* Titre séparateur pour la section Bonus */
+        .separateur-bonus {
+            text-align: center;
+            margin: 60px 0 30px 0;
+            font-size: 2rem;
+            color: #1a252f;
+            font-weight: 800;
+            text-transform: uppercase;
+            border-bottom: 3px solid #d4af37;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="conteneur">
+        <div class="titre-page">Documentaire <span>Formulaires</span></div>
+
+        <form method="post" action="cible_formulaire.php" enctype="multipart/form-data">
+
+            <fieldset>
+                <legend>Vos coordonnées</legend>
+                
+                <p>
+                    <label for="nom">Quel est votre nom ?</label>
+                    <span class="badge-code">type="text"</span>
+                    <span class="description-champ">Permet de créer une zone de saisie de texte à une seule ligne, idéale pour les noms ou prénoms.</span>
+                    <input type="text" name="nom" id="nom" tabindex="10" />
+                </p>
+                
+                <p>
+                    <label for="prenom">Quel est votre prénom ?</label>
+                    <span class="badge-code">type="text"</span>
+                    <input type="text" name="prenom" id="prenom" tabindex="20" />
+                </p>
+                
+                <p>
+                    <label for="email">Quel est votre e-mail ?</label>
+                    <span class="badge-code">type="text"</span>
+                    <span class="description-champ">Dans la norme XHTML classique, on utilise un champ texte simple pour l'e-mail.</span>
+                    <input type="text" name="email" id="email" tabindex="30" />
+                </p>
+                
+                <p>
+                    <label for="pass">Votre mot de passe :</label>
+                    <span class="badge-code">type="password"</span>
+                    <span class="description-champ">Masque les caractères saisis par des points ou des étoiles pour la sécurité.</span>
+                    <input type="password" name="pass" id="pass" tabindex="35" />
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Votre souhait</legend>
+                <p>
+                    <label>Faites un souhait que vous voudriez voir exaucé :</label>
+                    <span class="badge-code">type="radio"</span>
+                    <span class="description-champ">Les boutons radio permettent de faire un choix unique parmi une liste. Tous les boutons d'un groupe doivent avoir le même attribut <code>name</code>.</span>
+                    
+                    <div class="groupe-choix">
+                        <div class="ligne-choix">
+                            <input type="radio" name="souhait" value="riche" id="riche" tabindex="40" /> 
+                            <label for="riche">Etre riche</label>
+                        </div>
+                        <div class="ligne-choix">
+                            <input type="radio" name="souhait" value="celebre" id="celebre" tabindex="50" /> 
+                            <label for="celebre">Etre célèbre</label>
+                        </div>
+                        <div class="ligne-choix">
+                            <input type="radio" name="souhait" value="intelligent" id="intelligent" tabindex="60" /> 
+                            <label for="intelligent">Etre <strong>encore</strong> plus intelligent</label>
+                        </div>
+                        <div class="ligne-choix">
+                            <input type="radio" name="souhait" value="autre" id="autre" tabindex="70" /> 
+                            <label for="autre">Autre...</label>
+                        </div>
+                    </div>
+                </p>
+
+                <p>
+                    <label for="precisions">Si "Autre", veuillez préciser :</label>
+                    <span class="badge-code">&lt;textarea&gt;</span>
+                    <span class="description-champ">Permet d'écrire une quantité importante de texte sur plusieurs lignes (commentaires, descriptions...).</span>
+                    <textarea name="precisions" id="precisions" cols="40" rows="4" tabindex="80"></textarea>
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Informations complémentaires</legend>
+                <p>
+                    <label>Cochez les aliments que vous aimez manger :</label>
+                    <span class="badge-code">type="checkbox"</span>
+                    <span class="description-champ">Les cases à cocher permettent des choix multiples. L'attribut <code>checked="checked"</code> permet de cocher une case par défaut.</span>
+                    
+                    <div class="groupe-choix">
+                        <div class="ligne-choix">
+                            <input type="checkbox" name="frites" id="frites" tabindex="90" /> <label for="frites">Frites</label>
+                        </div>
+                        <div class="ligne-choix">
+                            <input type="checkbox" name="steak" id="steak" tabindex="100" /> <label for="steak">Steak haché</label>
+                        </div>
+                        <div class="ligne-choix">
+                            <input type="checkbox" name="epinards" id="epinards" checked="checked" tabindex="110" /> <label for="epinards">Epinards</label>
+                        </div>
+                        <div class="ligne-choix">
+                            <input type="checkbox" name="huitres" id="huitres" tabindex="120" /> <label for="huitres">Huitres</label>
+                        </div>
+                    </div>
+                </p>
+
+                <p>
+                    <label for="pays">Dans quel pays habitez-vous ?</label>
+                    <span class="badge-code">&lt;select&gt; et &lt;optgroup&gt;</span>
+                    <span class="description-champ">Crée une liste déroulante de choix. Les balises <code>optgroup</code> permettent de classer les choix par catégories non cliquables.</span>
+                    
+                    <select name="pays" id="pays" tabindex="130">
+                        <optgroup label="Europe">
+                            <option value="france">France</option>
+                            <option value="espagne">Espagne</option>
+                            <option value="italie">Italie</option>
+                            <option value="royaume-uni">Royaume-Uni</option>
+                        </optgroup>
+                        <optgroup label="Amérique">
+                            <option value="canada" selected="selected">Canada</option>
+                            <option value="etats-unis">Etats-Unis</option>
+                        </optgroup>
+                        <optgroup label="Asie">
+                            <option value="chine">Chine</option>
+                            <option value="japon">Japon</option>
+                        </optgroup>
+                    </select>
+                </p>
+            </fieldset>
+
+            <div class="zone-boutons">
+                <p>
+                    <span class="badge-code" style="margin:0;">type="submit"</span>
+                    <span class="badge-code">type="reset"</span>
+                    <span class="badge-code">type="button"</span><br/>
+                    <span class="description-champ" style="margin-top:5px; display:inline-block;">Les boutons d'action déclenchent l'envoi des données, réinitialisent le formulaire, ou servent d'actions personnalisées en Javascript.</span>
+                </p>
+                <input type="submit" value="Envoyer" class="btn btn-submit" tabindex="140" /> 
+                <input type="reset" value="Effacer" class="btn btn-reset" tabindex="150" />
+                <input type="button" value="Je sers à rien" class="btn btn-reset" style="background:#4a5568;" tabindex="160" />
+            </div>
+
+            <div class="separateur-bonus">Autres éléments de formulaire(Génerer par IA)</div>
+
+            <fieldset>
+                <legend>Dates et Heures (HTML5)</legend>
+
+                <p>
+                    <label for="date">Sélection de Date</label>
+                    <span class="badge-code">type="date"</span>
+                    <span class="description-champ">Affiche un calendrier complet pour choisir une date.</span>
+                    <input type="date" name="date" id="date" />
+                </p>
+
+                <p>
+                    <label for="heure">Sélection d'Heure</label>
+                    <span class="badge-code">type="time"</span>
+                    <span class="description-champ">Permet de choisir une heure et une minute précises.</span>
+                    <input type="time" name="heure" id="heure" />
+                </p>
+
+                <p>
+                    <label for="mois">Sélection de Mois</label>
+                    <span class="badge-code">type="month"</span>
+                    <span class="description-champ">Idéal pour les dates d'expiration (ex: cartes bancaires).</span>
+                    <input type="month" name="mois" id="mois" />
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Données Spécifiques (HTML5)</legend>
+
+                <p>
+                    <label for="email5">E-mail avec vérification</label>
+                    <span class="badge-code">type="email"</span>
+                    <span class="description-champ">Vérifie automatiquement que la saisie ressemble à une adresse mail (contient un @).</span>
+                    <input type="email" name="email5" id="email5" placeholder="exemple@domaine.com" />
+                </p>
+
+                <p>
+                    <label for="telephone">Numéro de Téléphone</label>
+                    <span class="badge-code">type="tel"</span>
+                    <span class="description-champ">Fait apparaître le pavé numérique directement sur les téléphones mobiles.</span>
+                    <input type="tel" name="telephone" id="telephone" placeholder="+229 ..." />
+                </p>
+
+                <p>
+                    <label for="site">Adresse d'un site web</label>
+                    <span class="badge-code">type="url"</span>
+                    <span class="description-champ">Oblige l'utilisateur à entrer une adresse valide (commençant par http:// ou https://).</span>
+                    <input type="url" name="site" id="site" placeholder="https://" />
+                </p>
+
+                <p>
+                    <label for="nombre">Nombre Inscrémentable</label>
+                    <span class="badge-code">type="number"</span>
+                    <span class="description-champ">Affiche des petites flèches pour augmenter ou diminuer la valeur numérique.</span>
+                    <input type="number" name="nombre" id="nombre" min="0" max="100" />
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Fichiers, Couleurs et Curseurs</legend>
+
+                <p>
+                    <label for="fichier">Envoi de Fichier</label>
+                    <span class="badge-code">type="file"</span>
+                    <span class="description-champ">Permet au visiteur d'uploader un document, une image, un PDF... depuis son ordinateur.</span>
+                    <input type="file" name="fichier" id="fichier" />
+                </p>
+
+                <p>
+                    <label for="couleur">Palette de Couleur</label>
+                    <span class="badge-code">type="color"</span>
+                    <span class="description-champ">Ouvre le sélecteur de couleurs du système d'exploitation.</span><br/>
+                    <input type="color" name="couleur" id="couleur" value="#d4af37" />
+                </p>
+
+                <p>
+                    <label for="curseur">Jauge ou Curseur</label>
+                    <span class="badge-code">type="range"</span>
+                    <span class="description-champ">Permet de choisir une valeur entre deux bornes en faisant glisser un curseur.</span>
+                    <input type="range" name="curseur" id="curseur" min="0" max="100" value="50" />
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Autocomplétion intelligente</legend>
+
+                <p>
+                    <label for="navigateur">Saisie avec suggestions</label>
+                    <span class="badge-code">&lt;input list="..."&gt; + &lt;datalist&gt;</span>
+                    <span class="description-champ">L'utilisateur peut taper librement, mais des suggestions pré-enregistrées s'affichent pour l'aider.</span>
+                    <input type="text" list="navigateurs" name="navigateur" id="navigateur" placeholder="Tapez ou double-cliquez..." />
+                    <datalist id="navigateurs">
+                        <option value="Google Chrome">
+                        <option value="Mozilla Firefox">
+                        <option value="Safari">
+                        <option value="Opera">
+                        <option value="Microsoft Edge">
+                    </datalist>
+                </p>
+            </fieldset>
+
+        </form>
+    </div>
+
+</body>
+</html>

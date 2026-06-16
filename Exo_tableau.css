@@ -1,0 +1,37 @@
+table {
+    border-collapse: collapse;
+    border-style: double;
+    border-color: yellow;
+    border-width: 10px;
+    font-size: 50px;
+}
+td {
+    border: 10px solid yellow;
+    border-style: double;
+    text-align: center;
+}
+.clignotant {
+    animation: clignotement 1s infinite;
+}
+@keyframes clignotement {
+    0% {opacity: 2;}
+    50% {opacity: 0;}
+    100% {opacity: 2;}
+}
+.pivote1 {
+    transform: rotate(-15deg);
+    display: inline-block;
+    white-space: nowrap;
+}
+.pivote2 {
+    transform: rotate(5deg);
+}
+.pivote3 {
+    transform: rotate(-90deg);
+}
+.IG {
+    transform: rotate(-45deg);
+}
+.font_IG {
+    background-color: deepskyblue
+}

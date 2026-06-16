@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap');
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6; /* Fond très clair et propre */
+            overflow: hidden;
+            /* Lumières subtiles en arrière-plan */
+            background-image: radial-gradient(circle at top left, rgba(212, 175, 55, 0.15), transparent 40%),
+                              radial-gradient(circle at bottom right, rgba(26, 37, 47, 0.1), transparent 40%);
+        }
+
+        /* La carte en verre */
+        .carte-verre {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px); /* Effet verre dépoli */
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 60px 80px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            /* Animation d'apparition par le bas */
+            animation: glissementHaut 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            transform: translateY(50px);
+            opacity: 0;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 0 0 15px 0;
+            color: #1a252f;
+            /* Effet masque texturé pour le titre */
+            background: linear-gradient(45deg, #1a252f, #34495e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .soulignement {
+            height: 4px;
+            width: 80px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 0 auto 30px auto;
+            border-radius: 2px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin: 0;
+            animation: pulse 3s infinite alternate;
+        }
+
+        @keyframes glissementHaut {
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            from { opacity: 0.6; }
+            to { opacity: 1; text-shadow: 0 0 10px rgba(212, 175, 55, 0.2); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="carte-verre">
+        <h1>BIENVENUE SUR NOTRE SITE</h1>
+        <div class="soulignement"></div>
+        <p>Veuillez naviguer à travers le menu à gauche, merci.</p>
+    </div>
+
+</body>
+</html>
