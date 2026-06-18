@@ -5,283 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page3.html - Mon Profil</title>
     <style>
-        /* Importation de la police Premium */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap');
 
-        /* =========================================
-           STYLE GÉNÉRAL
-           ========================================= */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f4f7f6;
-            color: #2c3e50;
-            margin: 0;
-            padding: 40px 20px;
-        }
+        body { font-family: 'Poppins', sans-serif; background-color: #f4f7f6; color: #2c3e50; margin: 0; padding: 40px 20px; box-sizing: border-box; }
+        .conteneur { max-width: 900px; margin: 0 auto; width: 100%; box-sizing: border-box;}
 
-        .conteneur {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+        .banniere-profil { background: #ffffff; border-radius: 20px; padding: 30px 40px; margin-bottom: 40px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05); display: flex; justify-content: space-between; align-items: center; border-bottom: 5px solid #1a252f; animation: apparition 0.6s ease-out forwards; }
+        .banniere-logos img { width: 100px; height: auto; transition: transform 0.3s ease; }
+        .banniere-logos img:hover { transform: scale(1.1); }
+        .banniere-titre { text-align: center; }
+        .banniere-titre h1 { margin: 0; font-size: 1.8rem; color: #4a5568; font-weight: 600; }
+        .banniere-titre h1 a { font-size: 2.5rem; color: #d4af37; text-decoration: none; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 4px 10px rgba(212, 175, 55, 0.2); transition: color 0.3s ease; }
+        .banniere-titre h1 a:hover { color: #1a252f; }
+        hr { display: none; }
 
-        /* =========================================
-           LA BANNIÈRE D'EN-TÊTE (Remplace le vieux tableau)
-           ========================================= */
-        .banniere-profil {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 30px 40px;
-            margin-bottom: 40px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 5px solid #1a252f;
-            animation: apparition 0.6s ease-out forwards;
-        }
+        .carte { background: #ffffff; border-radius: 16px; padding: 35px 40px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); border-top: 4px solid #d4af37; animation: apparition 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
+        @keyframes apparition { to { opacity: 1; transform: translateY(0); } }
 
-        .banniere-logos img {
-            width: 100px;
-            height: auto;
-            transition: transform 0.3s ease;
-        }
+        h2 { color: #1a252f; font-size: 1.6rem; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; margin-top: 0; margin-bottom: 25px; position: relative; }
+        h2::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 60px; height: 3px; background-color: #d4af37; }
+        p { font-size: 1.05rem; line-height: 1.8; color: #4a5568; margin-bottom: 15px; }
+        strong { color: #1a252f; font-weight: 800; }
 
-        .banniere-logos img:hover {
-            transform: scale(1.1);
-        }
+        .bloc-photo img { border-radius: 12px; border: 4px solid #f4f7f6; box-shadow: 0 8px 20px rgba(0,0,0,0.15); transition: transform 0.3s ease; margin-top: 10px; }
+        .bloc-photo img:hover { transform: scale(1.05) rotate(2deg); }
 
-        .banniere-titre {
-            text-align: center;
-        }
-
-        .banniere-titre h1 {
-            margin: 0;
-            font-size: 1.8rem;
-            color: #4a5568;
-            font-weight: 600;
-        }
-
-        .banniere-titre h1 a {
-            font-size: 2.5rem;
-            color: #d4af37;
-            text-decoration: none;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
-            transition: color 0.3s ease;
-        }
-
-        .banniere-titre h1 a:hover {
-            color: #1a252f;
-        }
-
-        /* Les vieilles balises HR sont cachées, on gère les séparations avec les cartes */
-        hr {
-            display: none;
-        }
-
-        /* =========================================
-           DESIGN DES CARTES POUR CHAQUE SECTION
-           ========================================= */
-        .carte {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 35px 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            border-top: 4px solid #d4af37;
-            animation: apparition 0.8s ease-out forwards;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        @keyframes apparition {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* =========================================
-           STYLES DES TEXTES ET TITRES (H2)
-           ========================================= */
-        h2 {
-            color: #1a252f;
-            font-size: 1.6rem;
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 10px;
-            margin-top: 0;
-            margin-bottom: 25px;
-            position: relative;
-        }
-        
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background-color: #d4af37;
-        }
-
-        p {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: #4a5568;
-            margin-bottom: 15px;
-        }
-
-        strong {
-            color: #1a252f;
-            font-weight: 800;
-        }
-
-        /* =========================================
-           MISE EN FORME DE LA PHOTO
-           ========================================= */
-        .bloc-photo img {
-            border-radius: 12px;
-            border: 4px solid #f4f7f6;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            transition: transform 0.3s ease;
-            margin-top: 10px;
-        }
-
-        .bloc-photo img:hover {
-            transform: scale(1.05) rotate(2deg);
-        }
-
-        /* =========================================
-           MISE EN FORME DES LISTES (Loisirs & Diplômes)
-           ========================================= */
-        ol, ul {
-            padding-left: 20px;
-            margin-bottom: 0;
-        }
-
-        li {
-            font-size: 1.1rem;
-            color: #4a5568;
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
-
-        /* Puces personnalisées dorées */
+        ol, ul { padding-left: 20px; margin-bottom: 0; }
+        li { font-size: 1.1rem; color: #4a5568; margin-bottom: 10px; font-weight: 500; }
         ol { list-style-type: decimal; }
-        ol li::marker {
-            color: #d4af37;
-            font-weight: 900;
-            font-size: 1.2rem;
-        }
-
+        ol li::marker { color: #d4af37; font-weight: 900; font-size: 1.2rem; }
         ul { list-style-type: none; padding-left: 5px; }
-        ul li::before {
-            content: '■';
-            color: #d4af37;
-            display: inline-block;
-            width: 1.5em;
-            font-size: 0.9rem;
-        }
-
-        /* Liens dans les listes (ex: Le DT) */
-        li a {
-            color: #1a252f !important;
-            font-weight: 800;
-            text-decoration: none !important;
-            border-bottom: 2px solid #d4af37;
-            transition: all 0.3s ease;
-        }
-        li a:hover {
-            background-color: rgba(212, 175, 55, 0.2);
-            color: #d4af37 !important;
-        }
+        ul li::before { content: '■'; color: #d4af37; display: inline-block; width: 1.5em; font-size: 0.9rem; }
+        li a { color: #1a252f !important; font-weight: 800; text-decoration: none !important; border-bottom: 2px solid #d4af37; transition: all 0.3s ease; }
+        li a:hover { background-color: rgba(212, 175, 55, 0.2); color: #d4af37 !important; }
+        .texte-description { text-align: justify; font-size: 1.1rem; line-height: 1.9; }
 
         /* =========================================
-           DESCRIPTION TEXTUELLE LONGUE
+           MOBILE : L'EN-TÊTE HORIZONTALE + TEXTES À GAUCHE
            ========================================= */
-        #description {
-            /* L'ID de l'ancre, on peut le cibler en CSS si besoin */
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; overflow-x: hidden; }
+            
+            /* L'en-tête reste bien sur une seule ligne (row) */
+            .banniere-profil { 
+                flex-direction: row; 
+                justify-content: space-between; 
+                align-items: center;
+                padding: 15px 5px; 
+                gap: 5px; 
+            }
+            .banniere-logos img { width: 35px; }
+            .banniere-titre { padding: 0 5px; }
+            .banniere-titre h1 { font-size: 0.65rem; line-height: 1.3; }
+            .banniere-titre h1 a { font-size: 1rem; }
+            
+            /* La carte n'est plus centrée par défaut */
+            .carte { padding: 20px 15px; } 
+            
+            /* Les titres H2 restent centrés comme tu l'as demandé */
+            h2 { font-size: 1.2rem; text-align: center; }
+            h2::after { left: 50%; transform: translateX(-50%); } 
+            
+            /* ICI LA CORRECTION : Le contenu (Nom, Prénom et Description) ramené à GAUCHE */
+            p, .texte-description { font-size: 0.85rem; line-height: 1.6; text-align: left; } 
+            
+            /* On centre juste la photo pour que ce soit propre */
+            .bloc-photo { text-align: center; }
+            
+            /* Les listes aussi à gauche */
+            ol, ul { text-align: left; padding-left: 20px; display: block; }
+            li { font-size: 0.85rem; }
         }
-        
-        .texte-description {
-            text-align: justify;
-            font-size: 1.1rem;
-            line-height: 1.9;
-        }
-
     </style>
 </head>
 <body>
-
     <div class="conteneur">
-
-        <!-- L'en-tête modernisée (remplace le tableau HTML) -->
         <div class="banniere-profil">
-            <div class="banniere-logos">
-                <a href="https://uac.bj" target="_blank">
-                    <img src="image/logo_uac.png" alt="Logo UAC"> <!-- Transformé en PNG virtuel pour l'esthétique -->
-                </a>
-            </div>
-            
+            <div class="banniere-logos"><a href="https://uac.bj" target="_blank"><img src="image/logo_uac.png" alt="Logo UAC"></a></div>
             <div class="banniere-titre">
                 <h1>Bienvenue dans mon site web</h1>
-                <!-- L'ancre vers la description a été conservée -->
                 <h1><a href="#description">Kali Merveille</a></h1>
             </div>
-            
-            <div class="banniere-logos">
-                <a href="http://www.eneam.uac.bj" target="_blank">
-                    <img src="image/logo_eneam.png" alt="Logo ENEAM">
-                </a>
-            </div>
+            <div class="banniere-logos"><a href="http://www.eneam.uac.bj" target="_blank"><img src="image/logo_eneam.png" alt="Logo ENEAM"></a></div>
         </div>
 
-        <!-- Section 1 : Informations -->
         <div class="carte" style="animation-delay: 0.1s;">
             <h2>I - Informations Personnelles</h2>
             <p><strong>Nom :</strong> IDJIWA</p>
             <p><strong>Prénom :</strong> Merveille</p>
             <p><strong>Âge :</strong> 19 ans</p>
             <p><strong>Num tél :</strong> +229 01 67 42 43 73</p>
-            
-            <p class="bloc-photo"><strong>Photo :</strong><br>
-                <a href="TP1.html">
-                    <img src="image/image_exemple.png" alt="Ma Photo (Lien vers TP1)" width="150">
-                </a>
-            </p>
+            <p class="bloc-photo"><strong>Photo :</strong><br><a href="TP1.html"><img src="image/image_exemple.png" alt="Ma Photo" width="100"></a></p>
         </div>
 
-        <!-- Section 2 : Diplômes -->
         <div class="carte" style="animation-delay: 0.2s;">
             <h2>II - Mes diplômes</h2>
-            <ol>
-                <li>CEP</li>
-                <li>BEPC</li>
-                <li><a href="TP1.html#citation">DT</a></li>
-            </ol>
+            <ol><li>CEP</li><li>BEPC</li><li><a href="TP1.html#citation">DT</a></li></ol>
         </div>
 
-        <!-- Section 3 : Loisirs -->
         <div class="carte" style="animation-delay: 0.3s;">
             <h2>III - Mes loisirs</h2>
-            <ul>
-                <li>Football</li>
-                <li>Lecture</li>
-                <li>Musique</li>
-                <li>Basket-ball</li>
-            </ul>
+            <ul><li>Football</li><li>Lecture</li><li>Musique</li><li>Basket-ball</li></ul>
         </div>
 
-        <!-- Section 4 : Description longue -->
         <div class="carte" style="animation-delay: 0.4s;">
             <h2 id="description">IV - Description</h2>
             <p class="texte-description">
                 Je m'appelle Merveille IDJIWA et je suis actuellement étudiant en première année d'Informatique de Gestion (IG1) à l'ENEAM. Mon parcours dans le monde du numérique a débuté par une formation technique rigoureuse, concrétisée par l'obtention d'un Diplôme de Technicien (DT) en Installation et Maintenance Informatique (IMI). Cette base solide m'a permis de développer une excellente maîtrise du matériel, de l'architecture des ordinateurs et du dépannage système, des compétences que j'ai acquises de manière autonome et pratique dès le lycée. Passionné par l'innovation technologique et l'évolution des systèmes connectés, j'aime concevoir et superviser des projets informatiques complets, allant de la logique algorithmique à l'intégration de solutions intelligentes.
                 <br><br>
-                Cette expertise pratique m’a déjà permis de piloter des projets concrets et de premier plan. J'ai notamment conçu et réalisé un système de porte intelligente basé sur la technologie de capteurs RFID. Ce projet d'ingénierie a eu l'honneur d'être sélectionné et exposé pour représenter mon établissement lors des Journées de l'EFTP (Enseignement et Formation Technique et Professionnelle), une expérience qui a confirmé mon attrait pour les solutions de sécurité connectées, tout comme mon projet GAZ-GUARD de surveillance de gaz domestique. Mon approche de l'informatique repose avant tout sur une solide compréhension de la structure des codes, de la logique des données et de l'orchestration de technologies avancées. En parallèle, je possède une forte sensibilité créative que j'exprime à travers la production musicale, la gestion des effets sonores et la création de contenus numériques via des outils de montage et de génération visuelle. Cette dualité entre rigueur technique et créativité me permet d'avoir une vision globale et transversale des projets. Mon objectif à l'ENEAM est d'approfondir mes compétences en gestion de systèmes d'information afin de devenir un profil polyvalent, capable de piloter des projets technologiques complexes de bout en bout.
+                Cette expertise pratique m’a déjà permis de piloter des projets concrets et de premier plan. J'ai notamment conçu et réalisé un système de porte intelligente basé sur la technologie de capteurs RFID. Ce projet d'ingénierie a eu l'honneur d'être sélectionné et exposé pour représenter mon établissement lors des Journées de l'EFTP.
             </p>
         </div>
-
     </div>
-
 </body>
 </html>

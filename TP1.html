@@ -5,222 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TP1 !</title>
     <style>
-        /* Importation de la police Premium */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap');
 
-        /* =========================================
-           STYLE GÉNÉRAL
-           ========================================= */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f4f7f6;
-            color: #2c3e50;
-            margin: 0;
-            padding: 40px 20px;
-        }
+        body { font-family: 'Poppins', sans-serif; background-color: #f4f7f6; color: #2c3e50; margin: 0; padding: 40px 20px; box-sizing: border-box; }
+        .conteneur { max-width: 900px; margin: 0 auto; width: 100%; box-sizing: border-box; }
 
-        .conteneur {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+        h1 { text-align: center; font-size: 2.8rem; font-weight: 900; color: #1a252f; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; text-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .carte { background: #ffffff; border-radius: 16px; padding: 35px 40px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); border-top: 4px solid #d4af37; animation: apparition 0.6s ease-out forwards; }
+        @keyframes apparition { to { opacity: 1; transform: translateY(0); } }
 
-        /* Titre principal H1 */
-        h1 {
-            text-align: center;
-            font-size: 2.8rem;
-            font-weight: 900;
-            color: #1a252f;
-            text-transform: uppercase;
-            margin-bottom: 50px;
-            letter-spacing: 2px;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
+        h2 { color: #1a252f; font-size: 1.8rem; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; margin-top: 0; position: relative; }
+        h2::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 50px; height: 2px; background-color: #d4af37; }
+        h3 { color: #1a252f; font-size: 1.5rem; margin-top: 0; }
+        h4 { color: #d4af37; font-size: 1.3rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        p { font-size: 1.05rem; line-height: 1.8; color: #4a5568; margin-bottom: 20px; }
+        em { color: #d4af37; font-weight: 600; font-style: italic; }
+        sup, sub { color: #1a252f; font-weight: 800; }
+        q { font-style: italic; color: #d4af37; font-weight: 600; quotes: "« " " »"; }
+
+        blockquote { background: linear-gradient(to right, rgba(212, 175, 55, 0.05), transparent); border-left: 6px solid #d4af37; padding: 25px 30px; margin: 30px 0; border-radius: 0 12px 12px 0; font-style: italic; color: #2c3e50; font-size: 1.1rem; line-height: 1.9; position: relative; box-shadow: 2px 2px 15px rgba(0,0,0,0.02); }
+        blockquote::before { content: '\201C'; font-size: 6rem; color: rgba(212, 175, 55, 0.15); position: absolute; top: -20px; left: 10px; font-family: Georgia, serif; }
+        blockquote p { position: relative; z-index: 1; margin: 0; }
 
         /* =========================================
-           DESIGN DES CARTES (GLASSMORPHISM)
+           MOBILE : TAILLE RÉDUITE ET SANS DÉBORDEMENT
            ========================================= */
-        .carte {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 35px 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            border-top: 4px solid #d4af37;
-            animation: apparition 0.6s ease-out forwards;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        @keyframes apparition {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* =========================================
-           STYLES DES SOUS-TITRES ET TEXTES
-           ========================================= */
-        h2 {
-            color: #1a252f;
-            font-size: 1.8rem;
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 10px;
-            margin-top: 0;
-            position: relative;
-        }
-        
-        /* Petite touche dorée sous les H2 */
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background-color: #d4af37;
-        }
-
-        h3 {
-            color: #1a252f;
-            font-size: 1.5rem;
-            margin-top: 0;
-        }
-
-        h4 {
-            color: #d4af37;
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        p {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: #4a5568;
-            margin-bottom: 20px;
-        }
-
-        /* Mise en valeur des balises sémantiques */
-        em {
-            color: #d4af37;
-            font-weight: 600;
-            font-style: italic;
-        }
-
-        sup, sub {
-            color: #1a252f;
-            font-weight: 800;
-        }
-
-        /* Petite citation (inline) */
-        q {
-            font-style: italic;
-            color: #d4af37;
-            font-weight: 600;
-            quotes: "« " " »";
-        }
-
-        /* =========================================
-           LE DESIGN DE LA GRANDE CITATION (BLOCKQUOTE)
-           ========================================= */
-        blockquote {
-            background: linear-gradient(to right, rgba(212, 175, 55, 0.05), transparent);
-            border-left: 6px solid #d4af37;
-            padding: 25px 30px;
-            margin: 30px 0;
-            border-radius: 0 12px 12px 0;
-            font-style: italic;
-            color: #2c3e50;
-            font-size: 1.1rem;
-            line-height: 1.9;
-            position: relative;
-            box-shadow: 2px 2px 15px rgba(0,0,0,0.02);
-        }
-
-        /* Le gros guillemet décoratif en arrière-plan */
-        blockquote::before {
-            content: '\201C'; /* Code HTML du guillemet ouvrant */
-            font-size: 6rem;
-            color: rgba(212, 175, 55, 0.15);
-            position: absolute;
-            top: -20px;
-            left: 10px;
-            font-family: Georgia, serif; /* Une police serif rend les guillemets plus beaux */
-        }
-        
-        /* Pour s'assurer que le texte du poème s'affiche bien au-dessus du guillemet */
-        blockquote p {
-            position: relative;
-            z-index: 1;
-            margin: 0;
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; overflow-x: hidden; }
+            h1 { 
+                font-size: 1.8rem; /* Titre plus petit */
+                word-wrap: break-word; /* Force le texte à aller à la ligne s'il est trop grand */
+                margin-bottom: 25px;
+            }
+            .carte { padding: 20px 15px; }
+            h2 { font-size: 1.3rem; }
+            p { font-size: 0.9rem; }
+            blockquote { padding: 15px; font-size: 0.85rem; }
+            blockquote::before { font-size: 3rem; top: -10px; left: 5px; }
         }
     </style>
 </head>
 <body>
-
     <div class="conteneur">
-
-        <h1>BIENVENU SUR NOTRE SITE !</h1>
-
+        <h1>BIENVENUE SUR NOTRE SITE !</h1>
         <div class="carte" style="animation-delay: 0.1s;">
             <h2>Je me présente</h2>
-            <p>
-                Bonjour et bienvenue sur mon site !<br /> 
-                Je me nomme Nom Merveille. Je suis né le 05 Juin 2007 et je suis Etudiant.
-            </p>
-
+            <p>Bonjour et bienvenue sur mon site !<br /> Je me nomme Nom Merveille. Je suis né le 05 Juin 2007 et je suis Etudiant.</p>
             <h2>Ce que je suis en train de faire</h2>
-            <p>
-                Ceci est mon premier test, et je suis vraiment heureux d’écrire ma première page web. Je deviendrais
-                certainement un grand Webmaster dans quelque temps.
-            </p>    
+            <p>Ceci est mon premier test, et je suis vraiment heureux d’écrire ma première page web. Je deviendrais certainement un grand Webmaster dans quelque temps.</p>    
         </div>
-        
         <div class="carte" style="animation-delay: 0.2s;">
             <h3>Un peu d’histoire</h3>
-            <p>
-                POINT p<sub>1</sub> : <em> Le xhtml ?</em><br />
-                Le langage XHTML est le langage qui nous permet de créer des sites web en ce début de
-                XXI<sup>ème</sup> siècle.<br />
-                Avant, vers la fin du XX<sup>ème</sup>, on utilisait le langage HTML, qui disparaît aujourd'hui peu à
-                peu au profit de XHTML.
-            </p>
-
-            <p>
-                Vous souvenez-vous de cette phrase de Neil Armstrong : 
-                <q>C'est un petit pas pour l'Homme, un grand pas pour l'Humanité</q>. 
-                C'était un certain 20 Juillet 1969...
-            </p>
+            <p>POINT p<sub>1</sub> : <em> Le xhtml ?</em><br />Le langage XHTML est le langage qui nous permet de créer des sites web en ce début de XXI<sup>ème</sup> siècle.<br />Avant, vers la fin du XX<sup>ème</sup>, on utilisait le langage HTML, qui disparaît aujourd'hui peu à peu au profit de XHTML.</p>
+            <p>Vous souvenez-vous de cette phrase de Neil Armstrong : <q>C'est un petit pas pour l'Homme, un grand pas pour l'Humanité</q>. C'était un certain 20 Juillet 1969...</p>
         </div>
-
         <div class="carte" style="animation-delay: 0.3s;">
             <h4>Le Corbeau et le Renard</h4>
             <p>Voici ce qui est sans aucun doute une des plus connues fables de <em>La Fontaine</em> :</p>
-            
             <blockquote id="citation">
                 <p>
-                    Maître Corbeau, sur un arbre perché,<br />
-                    Tenait en son bec un fromage.<br />
-                    Maître Renard, par l'odeur alléché,<br />
-                    Lui tint à peu près ce langage :<br />
-                    "Hé ! bonjour, Monsieur du Corbeau.<br />
-                    Que vous êtes joli ! que vous me semblez beau !<br />
-                    Sans mentir, si votre ramage<br />
-                    Se rapporte à votre plumage,<br />
-                    Vous êtes le Phénix des hôtes de ces bois."<br />
-                    A ces mots le Corbeau ne se sent pas de joie ;<br />
-                    Et pour montrer sa belle voix,<br />
-                    Il ouvre un large bec, laisse tomber sa proie.<br />
-                    Le Renard s'en saisit, et dit : "Mon bon Monsieur,<br />
-                    Apprenez que tout flatteur<br />
-                    Vit aux dépens de celui qui l'écoute :<br />
-                    Cette leçon vaut bien un fromage, sans doute. "<br />
-                    Le Corbeau, honteux et confus,<br />
-                    Jura, mais un peu tard, qu'on ne l'y prendrait plus.
+                    Maître Corbeau, sur un arbre perché,<br />Tenait en son bec un fromage.<br />Maître Renard, par l'odeur alléché,<br />Lui tint à peu près ce langage :<br />"Hé ! bonjour, Monsieur du Corbeau.<br />Que vous êtes joli ! que vous me semblez beau !<br />Sans mentir, si votre ramage<br />Se rapporte à votre plumage,<br />Vous êtes le Phénix des hôtes de ces bois."<br />A ces mots le Corbeau ne se sent pas de joie ;<br />Et pour montrer sa belle voix,<br />Il ouvre un large bec, laisse tomber sa proie.<br />Le Renard s'en saisit, et dit : "Mon bon Monsieur,<br />Apprenez que tout flatteur<br />Vit aux dépens de celui qui l'écoute :<br />Cette leçon vaut bien un fromage, sans doute. "<br />Le Corbeau, honteux et confus,<br />Jura, mais un peu tard, qu'on ne l'y prendrait plus.
                 </p>
             </blockquote>
         </div>
-
     </div>
-
 </body>
 </html>
