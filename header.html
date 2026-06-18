@@ -2,88 +2,78 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* Importation d'une police très élégante */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;900&display=swap');
 
         body { 
-            /* Dégradé subtil pour donner de la profondeur au header */
-            background: linear-gradient(90deg, #0a0e18 0%, #162235 50%, #0a0e18 100%);
+            /* ICI LA MAGIE : Le filtre sombre suivi de ton image de clavier ! */
+            background: linear-gradient(90deg, rgba(10,14,24,0.85) 0%, rgba(22,34,53,0.7) 50%, rgba(10,14,24,0.85) 100%),
+                        url('image/fond-clavier.jpeg');
+            background-size: cover;
+            background-position: center;
+            
             margin: 0; 
             padding: 0 25px; 
             overflow: hidden;
             border-bottom: 2px solid rgba(212, 175, 55, 0.5);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5); /* Ombre portée sous le header */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5); 
             display: flex;
             align-items: center;
             height: 100vh;
             font-family: 'Montserrat', sans-serif;
         }
-        .boite {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
+        .boite { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+        .texte-milieu { text-align: center; flex-grow: 1; padding: 0 10px;}
+        
+        .titre { 
+            font-size: clamp(0.8rem, 1.5vw, 1.2rem); 
+            font-weight: 500; 
+            color: #a0b0c0; /* Un peu plus clair pour ressortir sur le fond */
+            letter-spacing: 4px; 
+            text-transform: uppercase; 
+            margin-bottom: 5px; 
         }
-        .texte-milieu {
-            text-align: center;
-            flex-grow: 1;
+        
+        .nom { 
+            font-size: clamp(1.2rem, 3vw, 2.5rem); 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            text-decoration: none; 
+            letter-spacing: 2px; 
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c); 
+            -webkit-background-clip: text; 
+            color: transparent; 
+            text-shadow: 0px 3px 10px rgba(212, 175, 55, 0.2); 
+            transition: all 0.4s ease; 
         }
-        .titre {
-            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
-            font-weight: 500;
-            color: #8fa3b8; /* Bleu-gris très chic */
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 5px;
+        .nom:hover { filter: brightness(1.2); text-shadow: 0px 5px 20px rgba(212, 175, 55, 0.6); }
+        
+        /* Le halo blanc autour des logos pour qu'ils ne disparaissent pas */
+        .logo img { 
+            height: 70px; 
+            width: auto; 
+            filter: drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.6)); 
+            transition: transform 0.3s ease; 
         }
-        .nom {
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            font-weight: 900;
-            text-transform: uppercase;
-            text-decoration: none;
-            letter-spacing: 2px;
-            /* Le fameux effet Or Métallique Premium */
-            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-            -webkit-background-clip: text;
-            color: transparent;
-            text-shadow: 0px 3px 10px rgba(212, 175, 55, 0.2);
-            transition: all 0.4s ease;
-        }
-        .nom:hover {
-            filter: brightness(1.2);
-            text-shadow: 0px 5px 20px rgba(212, 175, 55, 0.6);
-        }
-        /* Les logos nus (sans fond blanc) avec un effet de survol */
-        .logo img {
-            height: 70px;
-            width: auto;
-            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.5));
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .logo img:hover {
-            transform: scale(1.1) rotate(-3deg);
+        .logo img:hover { transform: scale(1.1) rotate(-3deg); filter: drop-shadow(0px 0px 20px rgba(212, 175, 55, 0.8)); }
+        
+        @media (max-width: 768px) {
+            body { padding: 0 5px; }
+            .logo img { height: 40px; } 
+            .titre { font-size: 0.6rem; letter-spacing: 1px; margin-bottom: 2px; }
+            .nom { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
     <div class="boite">
-        <div class="logo">
-            <a href="https://uac.bj" target="_blank">
-                <img src="image/logo_uac.png" alt="UAC">
-            </a> 
-        </div>
-        
+        <div class="logo"><a href="https://uac.bj" target="_blank"><img src="image/logo_uac.png" alt="UAC"></a></div>
         <div class="texte-milieu">
             <div class="titre">Bienvenue dans le site web de</div>
             <a href="TP1.html#citation" target="BODY" class="nom">KALI MERVEILLE</a>
         </div>
-
-        <div class="logo">
-            <a href="https://eneam.uac.bj" target="_blank">
-                <img src="image/logo_eneam.png" alt="ENEAM">
-            </a>
-        </div>
+        <div class="logo"><a href="https://eneam.uac.bj" target="_blank"><img src="image/logo_eneam.png" alt="ENEAM"></a></div>
     </div>
 </body>
 </html>
