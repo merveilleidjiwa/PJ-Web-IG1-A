@@ -5,184 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tableau de l'ENEAM</title>
     <style>
-        /* Importation de la police Premium */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap');
 
-        /* =========================================
-           STYLE DU FOND BODY (PREMIUM)
-           ========================================= */
-        body {
-            background-color: #f4f7f6;
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
-        }
+        body { background-color: #f4f7f6; font-family: 'Poppins', sans-serif; margin: 0; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; overflow-x: hidden; }
+        .titre-page { text-align: center; font-size: 2.5rem; font-weight: 800; color: #1a252f; text-transform: uppercase; margin-bottom: 50px; letter-spacing: 2px; }
+        .titre-page span { color: #d4af37; }
 
-        .titre-page {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #1a252f;
-            text-transform: uppercase;
-            margin-bottom: 50px;
-            letter-spacing: 2px;
-        }
-        .titre-page span {
-            color: #d4af37;
-        }
+        .vitrine-animee { background: #080c14; padding: 40px 50px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border: 2px solid rgba(212, 175, 55, 0.4); animation: glissement-continu 4s ease-in-out infinite alternate; }
+        @keyframes glissement-continu { 0% { transform: translateX(-40px); } 100% { transform: translateX(40px); } }
 
-        /* =========================================
-           L'ANIMATION GAUCHE-DROITE DEMANDÉE
-           ========================================= */
-        .vitrine-animee {
-            background: #080c14; 
-            padding: 40px 50px;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-            border: 2px solid rgba(212, 175, 55, 0.4);
-            animation: glissement-continu 4s ease-in-out infinite alternate;
-        }
+        table { border-collapse: collapse; background-color: white; margin: 0 auto; width: 100%; }
+        table, th, td { border: 6px double yellow !important; }
+        td { padding: 25px; text-align: center; font-size: 1.6rem; color: black; overflow: hidden; }
+        caption { color: #d4af37; font-size: 2rem; margin-bottom: 20px; letter-spacing: 2px; text-shadow: 0 2px 5px rgba(0,0,0,0.2); }
 
-        @keyframes glissement-continu {
-            0% { transform: translateX(-40px); }
-            100% { transform: translateX(40px); }
-        }
+        .font_IG { background-color: cyan !important; }
+        .clignotant { animation: clignotement 0.6s infinite alternate; }
+        @keyframes clignotement { 0% { opacity: 1; } 100% { opacity: 0; } }
 
-        /* =========================================
-           LES CONSIGNES STRICTES DU PROFESSEUR
-           ========================================= */
-        table {
-            border-collapse: collapse;
-            background-color: white;
-            margin: 0 auto;
-        }
+        .pivote3 { writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(180deg); font-size: 2rem; letter-spacing: 5px; }
+        .IG { font-style: oblique; font-size: 2.5rem; transform: rotate(-15deg); display: inline-block; }
+        .pivote1 { transform: rotate(-22deg); display: inline-block; font-size: 2.6rem; white-space: nowrap; }
+        .pivote2 { transform: rotate(9deg); display: inline-block; font-size: 3.2rem; white-space: nowrap; }
 
-        /* 1. Bordure double jaune partout */
-        table, th, td {
-            border: 6px double yellow !important; 
+        /* === MOBILE : RÉTRÉCISSEMENT EXTRÊME POUR TOUT RENTRER === */
+        @media (max-width: 768px) {
+            body { padding: 5px; overflow-x: hidden; }
+            .titre-page { font-size: 1.3rem; margin-bottom: 10px; }
+            .vitrine-animee { padding: 5px; width: 100%; box-sizing: border-box; animation: none; transform: none; }
+            table { table-layout: fixed; }
+            table, th, td { border-width: 3px !important; } /* Bordures plus fines */
+            td { padding: 5px; font-size: 0.8rem; } /* Texte normal réduit */
+            caption { font-size: 1rem; margin-bottom: 10px; }
+            .pivote3 { font-size: 0.9rem; letter-spacing: 1px; }
+            .IG { font-size: 1.2rem; }
+            .pivote1 { font-size: 0.8rem; }
+            .pivote2 { font-size: 1rem; }
+            strong { font-size: inherit !important; } /* Force la taille réduite */
         }
-
-        td {
-            padding: 25px;
-            text-align: center;
-            font-size: 1.6rem;
-            color: black;
-            overflow: hidden; /* Empêche les grands textes de déborder de la case */
-        }
-
-        caption {
-            color: #d4af37;
-            font-size: 2rem;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        /* 2. Fond Cyan pour la cage de IG */
-        .font_IG {
-            background-color: cyan !important;
-        }
-
-        /* 3. IA qui clignote */
-        .clignotant {
-            animation: clignotement 0.6s infinite alternate;
-        }
-        @keyframes clignotement {
-            0% { opacity: 1; }
-            100% { opacity: 0; }
-        }
-
-        /* 4. EPAC à la verticale */
-        .pivote3 {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            transform: rotate(180deg);
-            font-size: 2rem;
-            letter-spacing: 5px;
-        }
-
-        /* 5. IG oblique */
-        .IG {
-            font-style: oblique;
-            font-size: 2.5rem;
-            transform: rotate(-15deg);
-            display: inline-block;
-        }
-
-        /* =========================================
-           6. CORRECTIONS DES DIAGONALES (Flash & Programmation)
-           ========================================= */
-        
-        /* Flash : du bas vers le haut */
-        .pivote1 {
-            transform: rotate(-22deg); /* Angle vers le haut */
-            display: inline-block;
-            font-size: 2.6rem; /* Taille augmentée pour remplir la case */
-            white-space: nowrap; /* Empêche de revenir à la ligne */
-        }
-
-        /* Programmation : du haut vers le bas */
-        .pivote2 {
-            transform: rotate(9deg); /* Angle vers le bas */
-            display: inline-block;
-            font-size: 3.2rem; /* Taille max pour remplir les 2 colonnes */
-            white-space: nowrap;
-        }
-
     </style>
 </head>
 <body>
-
-    <div class="titre-page">TP <span>Tableau ENEAM</span></div>
-
+    <div class="titre-page">TP <span>Tableau</span></div>
     <div class="vitrine-animee">
-        
         <table>
-            <caption><strong>Tableau de l'ENEAM</strong></caption>
+            <caption><strong>Tableau ENEAM</strong></caption>
             <tr>
-                <td rowspan="3">
-                    <div class="pivote3">
-                        <strong>EPAC</strong>
-                    </div>
-                </td>
-                <td colspan="2">
-                    <strong style="color: blue; font-size: 2.5rem;">ENEAM</strong>
-                </td>
+                <td rowspan="3"><div class="pivote3"><strong>EPAC</strong></div></td>
+                <td colspan="2"><strong style="color: blue;">ENEAM</strong></td>
             </tr>
             <tr>
-                <td rowspan="2" class="font_IG">
-                    <div class="IG">
-                        <strong>IG</strong>
-                    </div>
-                </td>
-                <td>
-                    <div class="clignotant">
-                        <p style="margin:0; font-size: 2rem;"><strong>IA</strong></p>
-                    </div>
-                </td>
+                <td rowspan="2" class="font_IG"><div class="IG"><strong>IG</strong></div></td>
+                <td><div class="clignotant"><p style="margin:0;"><strong>IA</strong></p></div></td>
             </tr>
+            <tr><td><strong>Claude</strong></td></tr>
             <tr>
-                <td><strong style="font-size: 2rem;">Claude</strong></td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="pivote1">
-                        <strong>Flash</strong>
-                    </div>
-                </td>
-                <td colspan="2">
-                    <div class="pivote2">
-                        <strong>Programmation</strong>
-                    </div>
-                </td>
+                <td><div class="pivote1"><strong>Flash</strong></div></td>
+                <td colspan="2"><div class="pivote2"><strong>Programmation</strong></div></td>
             </tr>
         </table> 
-
     </div>
-
 </body>
 </html>
